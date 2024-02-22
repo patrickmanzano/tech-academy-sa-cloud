@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pmanzano-service
+spec:
+  selector:
+    app: pmanzano-nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

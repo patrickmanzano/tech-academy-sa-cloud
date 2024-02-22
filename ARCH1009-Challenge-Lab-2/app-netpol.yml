@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: pmanzano-app-ingress
+spec:
+  podSelector:
+    matchLabels:
+      app: pmanzano-nginx
+  policyTypes:
+    - egress
+  egress:
+  - to:
+    - podSelector:
+      matchLabels:
+        app: pmanzano-mongo
+      ports:
+        - protocol: TCP
+          port: 27017

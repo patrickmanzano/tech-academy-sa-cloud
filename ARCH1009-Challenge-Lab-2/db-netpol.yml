@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: pmanzano-db-ingress
+spec:
+  podSelector:
+    matchLabels:
+      app: pmanzano-mongo
+  policyTypes:
+    - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: pmanzano-nginx
+      ports:
+        - protocol: TCP
+          port: 80

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pmanzano-nginxdeployment
+  labels:
+    app: pmanzano-nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pmanzano-nginx
+  template:
+    metadata:
+      labels:
+        app: pmanzano-nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80

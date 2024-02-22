@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pmanzano-mongodeployment
+  labels:
+    app: pmanzano-mongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pmanzano-mongo
+  template:
+    metadata:
+      labels:
+        app: pmanzano-mongo
+    spec:
+      containers:
+      - name: db-mongo
+        image: mongo
+        ports:
+        - containerPort: 27017
